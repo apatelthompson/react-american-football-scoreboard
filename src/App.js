@@ -21,9 +21,9 @@ function App() {
   });
 
   let tempSeconds = seconds;
-  let displayMinutes = Math.floor(tempSeconds / 60) % 60;
+  let displayMinutes = ("0" + (Math.floor(tempSeconds / 60) % 60)).slice(-2);
   tempSeconds %= 60;
-  let displaySeconds = tempSeconds;
+  let displaySeconds = ("0" + tempSeconds).slice(-2);
 
   return (
     <div className="container">
