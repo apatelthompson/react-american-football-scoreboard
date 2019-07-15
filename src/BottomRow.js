@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 
-const BottomRow = () => {
-  const [quarter, setNextQuarter] = useState(1);
-
+const BottomRow = props => {
   return (
     <div className="bottomRow">
       <div className="down">
@@ -20,10 +18,12 @@ const BottomRow = () => {
       </div>
       <div className="quarter">
         <h3 className="quarter__title">Quarter</h3>
-        <div className="quarter__value">{quarter}</div>
+        <div className="quarter__value">{props.quarter}</div>
         <button
           className="quarter-button"
-          onClick={() => setNextQuarter(quarter >= 4 ? 1 : quarter + 1)}
+          onClick={() =>
+            props.setNextQuarter(props.quarter >= 4 ? 1 : props.quarter + 1)
+          }
         >
           Change Quarter
         </button>

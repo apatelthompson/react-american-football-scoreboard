@@ -11,9 +11,16 @@ function App() {
 
   const [seconds, setSeconds] = useState(900);
 
+  const [quarter, setNextQuarter] = useState(1);
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setSeconds(seconds => seconds - 1);
+      if (seconds > 0) {
+        setSeconds(seconds => seconds - 1);
+      } else {
+        setSeconds(900);
+        setNextQuarter(quarter + 1);
+      }
     }, 1000);
     return function cleanup() {
       clearInterval(timer);
@@ -37,14 +44,14 @@ function App() {
             <div className="home__score">{homeScore}</div>
           </div>
           <div className="timer">
-            `{displayMinutes}:{displaySeconds}`
+            {displayMinutes}:{displaySeconds}
           </div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow quarter={quarter} setNextQuarter={setNextQuarter} />
       </section>
       <section className="buttons">
         <div className="homeButtons">
