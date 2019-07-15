@@ -23,7 +23,7 @@ const BottomRow = () => {
         <div className="quarter__value">{quarter}</div>
         <button
           className="quarter-button"
-          onClick={() => setNextQuarter(quarter + 1)}
+          onClick={() => setNextQuarter(quarter >= 4 ? 1 : quarter + 1)}
         >
           Change Quarter
         </button>
